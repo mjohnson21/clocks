@@ -1,0 +1,23 @@
+import PropTypes from 'prop-types'
+import useStyles from './{{dashCase name}}.styles'
+
+const {{pascalCase name}} = (props) => {
+  const {
+    headline,
+  } = props
+  const styles = useStyles()
+
+  return (
+    <div className={styles.root}>
+      {{pascalCase name}}: {headline}
+    </div>
+  )
+}
+
+{{pascalCase name}}.propTypes = {
+  headline: PropTypes.string,
+}
+
+{{pascalCase name}}.defaultProps = {}
+
+export default {{pascalCase name}}
