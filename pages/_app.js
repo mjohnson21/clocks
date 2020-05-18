@@ -1,6 +1,6 @@
 import App, { Container } from 'next/app'
 import React from 'react'
-import { ApolloProvider } from 'react-apollo'
+import FirebaseProvider from '@config/firebase'
 import { ThemeProvider } from '@material-ui/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Shell from '@components/shell'
@@ -16,18 +16,18 @@ class MyApp extends App {
   }
 
   render() {
-    const { Component, pageProps, apolloClient } = this.props
+    const { Component, pageProps } = this.props
 
     return (
       <Container>
-        <ApolloProvider client={apolloClient}>
+        <FirebaseProvider>
           <ThemeProvider theme={theme}>
             <CssBaseline />
             <Shell>
               <Component {...pageProps} />
             </Shell>
           </ThemeProvider>
-        </ApolloProvider>
+        </FirebaseProvider>
       </Container>
     )
   }

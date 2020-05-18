@@ -9,7 +9,7 @@ const Shell = (props) => {
 
   return (
     <ShellRoot>
-      <Header title="App Name" />
+      <Header title="Clocks" />
       {children}
     </ShellRoot>
   )
