@@ -1,17 +1,19 @@
 import PropTypes from 'prop-types'
-import Clock from '@components/clock'
+import Clock from '@components/clock/clock.container'
 import useStyles from './clocks.styles'
 
 const Clocks = (props) => {
   const {
     clocks,
+    collection,
+    setClock,
   } = props
   const styles = useStyles()
 
   return (
     <div className={styles.root}>
       {clocks && clocks.map((clock) => {
-        return <Clock key={clock.key} {...clock} />
+        return <Clock key={clock.id} {...clock} collection={collection} setClock={setClock} />
       })}
     </div>
   )

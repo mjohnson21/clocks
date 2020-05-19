@@ -1,7 +1,7 @@
 import app from 'firebase/app'
 import React, { createContext } from 'react'
 
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: 'AIzaSyDiBi94D91Gklr6nS4QiJdj3H7DMkR3Lvo',
   authDomain: 'clocks-f8e49.firebaseapp.com',
   databaseURL: 'https://clocks-f8e49.firebaseio.com',
@@ -11,8 +11,7 @@ const firebaseConfig = {
   appId: '1:645278446873:web:e4ee043fd8076d3542c188',
 }
 
-const FireBaseContext = createContext(null)
-export { FireBaseContext }
+export const FireBaseContext = createContext(null)
 
 export default ({ children }) => {
   if (!app.apps.length) {

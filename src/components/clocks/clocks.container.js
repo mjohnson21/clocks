@@ -1,37 +1,35 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { FireBaseContext } from '@config/firebase'
+import { useCollectionData } from 'react-firebase-hooks/firestore'
 import 'firebase/firestore'
 
 import Clocks from './clocks'
 
+const collection = 'clocks'
+
 export default function ClocksContainer(props) {
   const contextFb = useContext(FireBaseContext)
   const [clockList, setClockList] = useState([])
-  const clockCollection = contextFb.firestore().collection('clocks')
+  const clockCollection = contextFb.firestore().collection(collection)
 
-  const getClocks = () => {
-    clockCollection.get().then((snapshot) => {
-      if (snapshot) {
-        const clocksData = []
-        snapshot.forEach((item) => {
-          clocksData.push({ key: item.id, ...item.data() })
-        })
-        setClockList(clocksData)
-      }
-    }).catch((error) => {
-      console.error('something went br4oed', error)
+  const [snapshot, loading, error] = useCollectionData(
+    contextFb.firestore().collection(collection),
+    { idField: true },
+  )
+
+  const setClock = (increment, data) => {
+    const { id, title, max, current } = data
+    clockCollection.doc(id).set({
+      title,
+      max,
+      id,
+      current: current + increment,
     })
   }
 
-  useEffect(() => {
-    getClocks()
-  }, [])
-
-
-
   return (
     <div>
-      {clockList ? <Clocks clocks={clockList} /> : <div>loading...</div>}
+      {snapshot ? <Clocks clocks={snapshot} collection={clockCollection} setClock={setClock} /> : <div>loading...</div>}
     </div>
   )
 }

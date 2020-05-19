@@ -19,10 +19,13 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
+          <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@200;400;700&display=swap" rel="stylesheet" />
         </Head>
         <body>
-          <Main />
-          <NextScript />
+        <Main />
+        <NextScript />
+        <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js" />
+        <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-firestore.js" />
         </body>
       </html>
     )

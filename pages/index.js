@@ -3,7 +3,7 @@ import Clocks from '@components/clocks/clocks.container'
 
 function Home() {
   return (
-    <Box p={4} bgcolor="primary.light">
+    <Box p={2}>
       <Clocks />
     </Box>
   )
